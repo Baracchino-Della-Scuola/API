@@ -21,7 +21,7 @@ async def main(request: Request, response: Response):
    return response
 
 @app.get("/files")
-async def files(request:Request, response: Response, user_agent: str = Header(None), authorization: str = Header(None)):
+async def files(request:Request, response: Response, authorization: str = Header(None)):
     print(request.headers)
     
     con = await aiomysql.connect(autocommit=True, host=host, port=port, db=db, user=user, password=password)
@@ -52,7 +52,7 @@ async def upload(request: Request, response: Response, authorization: str = Head
     
 
 @app.get("/tags")
-async def files(request: Request, response: Response, user_agent: str = Header(None), authorization: str = Header(None)):
+async def files(request: Request, response: Response, authorization: str = Header(None)):
     print(request.headers)
 
     con = await aiomysql.connect(autocommit=True, host=host, port=port, db=db, user=user, password=password)
